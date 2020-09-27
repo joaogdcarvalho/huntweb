@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 
+import './styles.css';
+
 export default class Main extends Component {
   // objeto de estado
   state = {
@@ -21,11 +23,18 @@ export default class Main extends Component {
   }
 
   render() {
+    const { products } = this.state;
+
     // escutou que o estado foi alterado, recalculou o componente, exibindo novo valor do array
     return (
       <div className="product-list">
-        { this.state.products.map(product => (
-          <h2 key={product._id}>{product.title}</h2>
+        { products.map(product => (
+          <article key={product._id}>
+            <strong>{product.title}</strong>
+            <p>{product.description}</p>
+
+            <a href="#">Acessar</a>
+          </article>
         ))}
       </div>
     );
